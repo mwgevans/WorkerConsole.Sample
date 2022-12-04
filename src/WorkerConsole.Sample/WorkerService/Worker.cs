@@ -8,7 +8,10 @@ namespace WorkerService
         {
             _logger = logger;
         }
-
+        public async Task Run(CancellationToken stoppingToken)
+        {
+            await ExecuteAsync(stoppingToken);
+        }
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
